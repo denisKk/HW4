@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: Rhode Island School of Design Museum of Art.
+  description: https://risdmuseum.org/
+  version: 1.0.0
+servers:
+  - url: https://risdmuseum.org/api/v1/
+tags:
+  - name: Artworks
+    description: RISD Museum Collection API
+paths:
+  /collection:
+    get:
+      tags:
+        - Artworks
+      summary: Artworks List
+      operationId: everythingGet
+      parameters:
+      - name: page
+        in: query
+        description: Number of page
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: items_per_page
+        in: query
+        description: Limit of artworks by page
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: has_images
+        in: query
+        description: Filter to return only artworks that have a web image asset
+        required: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      responses:
+                "200":
+                  description: success
+                  content:
+                    application/json:
+                      schema:
+                       $ref: '#/components/schemas/ArtworksList'
+                default:
+                 description: enexpected error
+                 content:
+                   application/json:
+                    schema:
+                     $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+   ArtworksList:
+      type: array
+      items:
+       $ref: '#/components/schemas/Artwork'
+   Artwork:
+     type: object
+     properties:
+      id:
+       type: string
+      title:
+       type: string
+      images:
+        type: array
+        items:
+          type: string
+      description:
+        type: string
+      dating:
+        type: string
+      medium:
+        type: array
+        items:
+          type: string
+      primaryMaker:
+        type: string
+   ErrorModel:
+    required:
+     - status
+     - error
+    type: object
+    properties:
+        error:
+          type: string
+        status:
+          maximum: 600
+          minimum: 100
+          type: integer
+        detail:
+          type: string

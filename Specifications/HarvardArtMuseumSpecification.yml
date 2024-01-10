@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: The Harvard Art Museums API
+  description: https://harvardartmuseums.org/
+  version: 1.0.0
+servers:
+- url: https://api.harvardartmuseums.org/
+tags:
+- name: Artworks
+  description: The Harvard Art Museums
+paths:
+  /object:
+    get:
+      tags:
+      - Artworks
+      summary: Artworks List
+      operationId: everythingGet
+      parameters:
+      - name: apikey
+        in: query
+        description: API key
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: number of page
+        schema:
+          type: integer
+      - name: size
+        in: query
+        description: Count of artworks by page
+        schema:
+          type: integer
+      - name: hasimage
+        in: query
+        description: Filter to return only artworks that have a image
+        required: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtworksList'
+        default:
+          description: enexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+   ArtworksList:
+    type: object
+    properties:
+     info:
+      $ref: '#/components/schemas/Info'
+     records:
+      type: array
+      items:
+       $ref: '#/components/schemas/Artwork'
+   Info:
+    type: object
+    properties:
+     totalrecords:
+      type: integer
+      format: int32
+      nullable: false
+     next:
+       type: string
+   Artwork:
+     type: object
+     properties:
+      id:
+       type: integer
+       format: int32
+      title:
+       type: string
+      description:
+        type: string
+      creation_date:
+        type: string
+      people:
+        type: array
+        items:
+          type: object
+          properties:
+            displayname:
+              type: string
+      technique:
+        type: string
+      dated:
+        type: string
+      primaryimageurl:
+        type: string
+      images:
+        type: array
+        items:
+          type: object
+          properties:
+            idsid:
+              type: integer
+              format: int32
+   ErrorModel:
+    required:
+     - status
+     - error
+    type: object
+    properties:
+        error:
+          type: string
+        status:
+          maximum: 600
+          minimum: 100
+          type: integer
+        detail:
+          type: string

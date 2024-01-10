@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Art Institution of Chicago API
+  description: Api.artic.edu
+  version: 1.0.0
+servers:
+  - url: https://api.artic.edu/api/v1/
+tags:
+  - name: Artworks
+    description: Art Institute Chicago
+paths:
+  /artworks:
+    get:
+      tags:
+        - Artworks
+      summary: Artworks List
+      operationId: everythingGet
+      parameters:
+      - name: page
+        in: query
+        description: Number of page
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Limit of artworks by page
+        required: true
+        schema:
+          type: string
+      responses:
+                "200":
+                  description: success
+                  content:
+                    application/json:
+                      schema:
+                       $ref: '#/components/schemas/ArtworksList'
+                default:
+                 description: enexpected error
+                 content:
+                   application/json:
+                    schema:
+                     $ref: '#/components/schemas/ErrorModel'
+components:
+  schemas:
+   ArtworksList:
+    type: object
+    properties:
+      pagination:
+        type: object
+        $ref: '#/components/schemas/Pagination'
+      data:
+       type: array
+       items:
+        $ref: '#/components/schemas/Artwork'
+   Pagination:
+     type: object
+     properties:
+      total:
+       type: integer
+       format: int32
+      limit:
+       type: integer
+       format: int32
+      offset:
+       type: integer
+       format: int32
+      total_pages:
+       type: integer
+       format: int32
+      current_page:
+       type: integer
+       format: int32
+      prev_url:
+       type: string
+      next_url:
+       type: string
+   Artwork:
+     type: object
+     properties:
+      id:
+       type: integer
+       format: int32
+      api_model:
+        type: string
+      api_link:
+       type: string
+      is_boosted:
+       type: boolean
+      title:
+       type: string
+      alt_titles:
+       type: array
+       format: nullable
+       items:
+         type: string
+      description:
+       type: string
+      image_id:
+       type: string
+      alt_image_ids:
+        type: array
+        items:
+          type: string
+      date_display:
+       type: string
+      artist_display:
+       type: string
+      medium_display:
+       type: string
+   ErrorModel:
+    required:
+     - status
+     - error
+    type: object
+    properties:
+        error:
+          type: string
+        status:
+          maximum: 600
+          minimum: 100
+          type: integer
+        detail:
+          type: string
