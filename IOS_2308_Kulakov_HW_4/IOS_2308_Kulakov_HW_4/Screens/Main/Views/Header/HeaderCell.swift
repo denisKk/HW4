@@ -11,6 +11,7 @@ struct HeaderCell: View {
             logo
                 .resizable()
                 .scaledToFit()
+                .foregroundColor(.red)
             Text(title)
                 .foregroundColor(.white)
                 .font(.system(size: 48, weight: .light))

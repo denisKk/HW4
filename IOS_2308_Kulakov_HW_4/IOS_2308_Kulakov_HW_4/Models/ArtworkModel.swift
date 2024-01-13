@@ -8,7 +8,6 @@
 import Foundation
 
 struct ArtworkModel: Identifiable {
-    
     let id: Int
     let title: String
     let descrittion: String
@@ -39,7 +38,7 @@ extension ArtworkModel {
                              imageFullScreenURL: URL(string: "https://www.artic.edu/iiif/2/2a6e9dc3-2ef0-9d65-49f1-a7f0f851902d/full/full/0/default.jpg")!,
                              materials: "Wood, Gold",
                              author: "Picasso",
-                             date: "1284"
+                         date: "1284"
                             ),
             
             ArtworkModel(id: 2,

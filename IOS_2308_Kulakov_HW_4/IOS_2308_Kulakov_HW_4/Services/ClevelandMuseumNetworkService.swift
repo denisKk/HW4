@@ -4,7 +4,7 @@ import Foundation
 import ClevelandMuseumNetworking
 
 
-final class ClevelandMuseumNetworkService: IService {
+final class ClevelandMuseumNetworkService: NetworkingService {
 
     class var service: ClevelandMuseumNetworkService {
         if let service: ClevelandMuseumNetworkService = ServiceLocator.service() {
@@ -20,8 +20,8 @@ final class ClevelandMuseumNetworkService: IService {
  
         ArtworksAPI.everythingGet(skip: page*limit, limit: limit, hasImage: 1) { result, error in
             
-            guard error == nil else {
-                print(error as Any)
+            if let error = error  {
+                print(error.localizedDescription)
                 return
             }
 

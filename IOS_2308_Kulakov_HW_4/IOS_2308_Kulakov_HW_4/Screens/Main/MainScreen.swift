@@ -3,7 +3,7 @@ import SwiftUI
 
 struct MainScreen: View {
 
-    @State var selectedTab: HeaderList.Headers = .cma
+    @State private var selectedTab: HeaderList.Headers = .cma
     
     var body: some View {
         GeometryReader {proxy in
@@ -20,6 +20,7 @@ struct MainScreen: View {
                         height: isVertical ? height * 0.29 : height
                     )
                 artworksList
+                    
             }
         }
         .background(.black)
@@ -35,8 +36,8 @@ struct MainScreen: View {
             ArtworksList(artworkListVM: ArtworkListViewModel(service: ArtInstituteChicagoNetworkService.self))
         case .cma:
             ArtworksList(artworkListVM: ArtworkListViewModel(service: ClevelandMuseumNetworkService.self))
-        case .hams:
-            ArtworksList(artworkListVM: ArtworkListViewModel(service: HarvardArtMuseumsNetworkService.self))
+        case .liked:
+            EmptyView()
         }
     }
 }

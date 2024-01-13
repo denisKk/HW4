@@ -1,7 +1,7 @@
 
 import Foundation
 
-protocol IService {
+protocol NetworkingService {
     static var service: Self {get}
     
     func fetch(page: Int, limit: Int, completion: @escaping ([ArtworkModel]) -> ())

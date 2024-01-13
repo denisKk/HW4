@@ -17,61 +17,59 @@ struct FullImageScreen: View {
         GeometryReader { proxy in
             ZStack {
                 
-                CacheAsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty:
-                        VStack {
-                            ProgressView()
-                            Text("Please wait...")
-                        }
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    case .failure(let error):
-                        Text("Error: \(error.localizedDescription)")
-                    @unknown default:
-                        fatalError()
-                    }
-                }
-                .scaleEffect(scale)
-                .offset(x: offset.x, y: offset.y)
-                .gesture(makeDragGesture(size: proxy.size))
-                .gesture(makeMagnificationGesture(size: proxy.size))
-                .edgesIgnoringSafeArea(.all)
-                
+                image
+                    .gesture(makeDragGesture(size: proxy.size))
+                    .gesture(makeMagnificationGesture(size: proxy.size))
                 
                 VStack {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .black)
-                        .frame(width: 33, height: 33)
-                        .overlay(Circle().stroke(lineWidth: 0.5).fill(.red))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, 24)
-                        .padding(.top)
-                        .ignoresSafeArea(edges: .top)
+                    CloseButton()
                         .navigationPopLink(destination: .previous)
-                    
                     Spacer()
                 }
-                
-                VStack {
-                    HStack {
-                        Image(systemName: "hand.draw.fill")
-                        Text(" drag to magnify")
-                    }
-                    .font(.subheadline.weight(.bold))
-                    .padding(.horizontal)
-                    .foregroundColor(.gray)
-                }
-                .opacity(scale == 1 ? 1 : 0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                hint
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
         }
+    }
+    
+    @ViewBuilder
+    private var image: some View {
+        CacheAsyncImage(url: url) { phase in
+            switch phase {
+            case .empty:
+                VStack {
+                    ProgressView()
+                    Text("Please wait...")
+                }
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+            case .failure(let error):
+                Text("Error: \(error.localizedDescription)")
+            @unknown default:
+                fatalError()
+            }
+        }
+        .scaleEffect(scale)
+        .offset(x: offset.x, y: offset.y)
+        .edgesIgnoringSafeArea(.all)
+    }
+    
+    @ViewBuilder
+    private var hint: some View {
+        VStack {
+            HStack {
+                Image(systemName: "hand.draw.fill")
+                Text(" pinch to zoom")
+            }
+            .font(.subheadline.weight(.bold))
+            .padding(.horizontal)
+            .foregroundColor(.gray)
+        }
+        .opacity(scale == 1 ? 1 : 0)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
     
     private func makeMagnificationGesture(size: CGSize) -> some Gesture {

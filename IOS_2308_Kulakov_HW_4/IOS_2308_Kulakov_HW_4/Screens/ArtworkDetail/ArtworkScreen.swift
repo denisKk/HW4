@@ -19,16 +19,7 @@ struct ArtworkScreen: View {
                 }
                 
                 VStack {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .black)
-                        .frame(width: 33, height: 33)
-                        .overlay(Circle().stroke(lineWidth: 0.5).fill(.red))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, 24)
-                        .padding(.top)
-                        .ignoresSafeArea()
+                    CloseButton()
                         .navigationPopLink(destination: .previous)
                     
                     Spacer()

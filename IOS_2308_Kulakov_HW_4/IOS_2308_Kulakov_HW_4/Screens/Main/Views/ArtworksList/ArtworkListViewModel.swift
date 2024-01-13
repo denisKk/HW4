@@ -1,7 +1,7 @@
 
 import Foundation
 
-final class ArtworkListViewModel<Service: IService>: ObservableObject {
+final class ArtworkListViewModel<Service: NetworkingService>: ObservableObject {
     internal init(service: Service.Type) {
         self.networkService = service
     }

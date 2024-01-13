@@ -3,7 +3,7 @@ import SwiftUI
 import UI
 
 
-struct ArtworksList<Service: IService>: View {
+struct ArtworksList<Service: NetworkingService>: View {
     
     @StateObject var artworkListVM: ArtworkListViewModel<Service>
     
@@ -34,6 +34,7 @@ struct ArtworksList<Service: IService>: View {
                         }
                     }
                     .transition(.moveToBottom)
+    
                 }
                 if artworkListVM.isLoading {
                     ProgressView()

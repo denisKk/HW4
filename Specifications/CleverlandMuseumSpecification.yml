@@ -85,6 +85,10 @@ components:
             properties:
               url:
                type: string
+              width:
+               type: string
+              height:
+               type: string
           print:
             type: object
             properties:

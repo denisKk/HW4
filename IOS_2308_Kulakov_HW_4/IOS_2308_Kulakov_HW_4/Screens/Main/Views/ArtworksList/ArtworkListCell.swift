@@ -9,74 +9,86 @@ struct ArtworkListCell: View {
     
     var body: some View {
         
-        CacheAsyncImage(url: artwork.imageURL) { phase in
-            switch phase {
-            case .empty:
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(minHeight: 250, idealHeight: 310, maxHeight: 700)
-                    .padding()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-            case .failure(let error):
-                Text("Error: \(error.localizedDescription)")
-            @unknown default:
-                fatalError()
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .frame(minHeight: 250, idealHeight: 310, maxHeight: 700)
-        .scaledToFill()
+        image
         .overlay {
-            ZStack {
-                GeometryReader { geo in
-                    ZStack() {
-                        Text(artwork.title)
-                            .font(.largeTitle.weight(.light))
-                            .foregroundColor(.white)
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(2)
-                            .padding(4)
-                            .shadow(color: .black, radius: 2, x: 1, y: 1)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .frame(height: 90)
-                    .background(
-                        Rectangle()
-                            .fill(
-                                LinearGradient(colors: [.brown, .brown.opacity(0.3)], startPoint: .top, endPoint: .bottom)
-                            )
-                            .blur(radius: 3)
-                    )
-                }
-                
-                VStack {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        Button {
-                            onFavTap()
-                        } label: {
-                            Image(systemName: "heart.circle.fill")
-                                .resizable()
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(.red, .black)
-                                .frame(width: 30, height: 30)
-                                .shadow(radius: 3)
-                                .padding()
-                        }
-                    }
-                }
+            ZStack(alignment: .bottomTrailing) {
+                title
+                likeButton
             }
         }
         .padding(.horizontal,4)
         .background(.black)
-        //        .onAppear {
-        //            print( imageDimenssions(url: artwork.imageURL))
-        //        }
+    }
+    
+    
+    
+    @ViewBuilder
+    private var title: some View {
+        VStack {
+            Text(artwork.title)
+                .font(.largeTitle.weight(.light))
+                .foregroundColor(.white)
+                .minimumScaleFactor(0.5)
+                .lineLimit(2)
+                .padding(4)
+                .shadow(color: .black, radius: 2, x: 1, y: 1)
+                .frame(maxWidth: .infinity)
+                .frame(height: 90)
+                .background(
+                    Rectangle()
+                        .fill(
+                            LinearGradient(colors: [.brown, .brown.opacity(0.3)], startPoint: .top, endPoint: .bottom)
+                        )
+                        .blur(radius: 3)
+                )
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+    
+    @ViewBuilder
+    private var image: some View {
+        CacheAsyncImage(url: artwork.imageURL, transaction: .init(animation: .easeInOut)) { phase in
+            
+            switch phase {
+            case .empty:
+                Rectangle()
+                    .fill(.clear)
+                    .frame(maxWidth: .infinity)
+                    .scaledToFit()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+                
+            case .failure(let error):
+                Rectangle()
+                    .fill(.black)
+                    .frame(maxWidth: .infinity)
+                    .scaledToFit()
+                    .overlay {
+                        Text(error.localizedDescription)
+                    }
+            @unknown default:
+                fatalError()
+            }
+        }
+    }
+    
+    
+    @ViewBuilder
+    private var likeButton: some View {
+        Button {
+            onFavTap()
+        } label: {
+            Image(systemName: "heart")
+                .resizable()
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.red, .black)
+                .frame(width: 30, height: 30)
+                .shadow(radius: 3)
+                .padding()
+        }
+        .padding()
     }
     
     func imageDimenssions(url: URL) -> String{

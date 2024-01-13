@@ -16,7 +16,7 @@ extension Artwork {
 }
 
 
-final class ArtInstituteChicagoNetworkService: IService {
+final class ArtInstituteChicagoNetworkService: NetworkingService {
    
     class var service: ArtInstituteChicagoNetworkService {
         if let service: ArtInstituteChicagoNetworkService = ServiceLocator.service() {
