@@ -90,14 +90,14 @@
 		B81F512C2B0D70F100765A44 /* IOS_2308_Kulakov_HW_4 */ = {
 			isa = PBXGroup;
 			children = (
-				B81F512F2B0D70F100765A44 /* Preview Content */,
-				B81F51692B0EAF2E00765A44 /* Services */,
 				B81F51482B0D70F100765A44 /* Application */,
+				B81F51692B0EAF2E00765A44 /* Services */,
 				B81F515E2B0D710F00765A44 /* Modules */,
 				B81F512D2B0D70F100765A44 /* Models */,
 				B81F51342B0D70F100765A44 /* Screens */,
 				B81F51312B0D70F100765A44 /* Extensions */,
 				B81F514A2B0D70F100765A44 /* Assets */,
+				B81F512F2B0D70F100765A44 /* Preview Content */,
 			);
 			path = IOS_2308_Kulakov_HW_4;
 			sourceTree = "<group>";
