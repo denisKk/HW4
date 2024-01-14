@@ -6,6 +6,8 @@ import UI
 struct ArtworksList<Service: NetworkingService>: View {
     
     @StateObject var artworkListVM: ArtworkListViewModel<Service>
+    @EnvironmentObject private var store: Store
+    
     
     var body: some View {
         
@@ -22,18 +24,14 @@ struct ArtworksList<Service: NetworkingService>: View {
             LazyVStack(spacing: 0) {
                 ForEach(artworkListVM.artworks) { artwork in
                     
-                    ArtworkListCell(artwork: artwork){
-                        withAnimation {
-                            artworkListVM.delete(artwork: artwork)
-                        }
-                    }
+                    ArtworkListCell(artwork: artwork)
                     .navigationPushLink(destination: ArtworkScreen(artwork: artwork))
                     .onAppear{
                         if artworkListVM.artworks.isLastElement(artwork) {
                             artworkListVM.fetch()
                         }
                     }
-                    .transition(.moveToBottom)
+//                    .transition(.moveToBottom)
     
                 }
                 if artworkListVM.isLoading {

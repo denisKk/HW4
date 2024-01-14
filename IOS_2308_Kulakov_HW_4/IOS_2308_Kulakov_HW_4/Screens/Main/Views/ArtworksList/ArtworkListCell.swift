@@ -4,8 +4,9 @@ import UI
 
 struct ArtworkListCell: View {
     
+    @EnvironmentObject private var store: Store
+    
     var artwork: ArtworkModel
-    var onFavTap: () -> ()
     
     var body: some View {
         
@@ -78,9 +79,15 @@ struct ArtworkListCell: View {
     @ViewBuilder
     private var likeButton: some View {
         Button {
-            onFavTap()
+            withAnimation {
+                if store.contains(by: artwork.id) {
+                    store.removeArtwork(artwork)
+                } else {
+                    store.addArtwork(artwork)
+                }
+            }
         } label: {
-            Image(systemName: "heart")
+            Image(systemName: store.contains(by: artwork.id) ? "heart.fill" : "heart")
                 .resizable()
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.red, .black)

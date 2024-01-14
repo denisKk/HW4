@@ -37,7 +37,7 @@ struct MainScreen: View {
         case .cma:
             ArtworksList(artworkListVM: ArtworkListViewModel(service: ClevelandMuseumNetworkService.self))
         case .liked:
-            EmptyView()
+            LikedList()
         }
     }
 }
