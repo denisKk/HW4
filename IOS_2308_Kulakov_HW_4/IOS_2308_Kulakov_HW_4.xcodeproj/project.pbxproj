@@ -18,7 +18,6 @@
 		B81F51642B0D710F00765A44 /* UI in Resources */ = {isa = PBXBuildFile; fileRef = B81F515F2B0D710F00765A44 /* UI */; };
 		B81F516B2B0EAF4E00765A44 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F516A2B0EAF4E00765A44 /* ServiceLocator.swift */; };
 		B838C6A72ADED37200E74DF8 /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = B838C6A62ADED37200E74DF8 /* UI */; };
-		B8614E5B2B53439B001DF305 /* ClevelandMuseumNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = B8614E5A2B53439B001DF305 /* ClevelandMuseumNetworking */; };
 		B8614E5E2B5345D2001DF305 /* ArtInstituteChicagoNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = B8614E5D2B5345D2001DF305 /* ArtInstituteChicagoNetworking */; };
 		B8614E652B535B7F001DF305 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8614E642B535B7F001DF305 /* Store.swift */; };
 		B8614E772B535BAE001DF305 /* FullImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8614E682B535BAE001DF305 /* FullImageScreen.swift */; };
@@ -30,6 +29,7 @@
 		B8614E7D2B535BAE001DF305 /* ArtworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8614E732B535BAE001DF305 /* ArtworkListViewModel.swift */; };
 		B8614E7E2B535BAE001DF305 /* HeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8614E752B535BAE001DF305 /* HeaderListView.swift */; };
 		B8614E7F2B535BAE001DF305 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8614E762B535BAE001DF305 /* HeaderCell.swift */; };
+		B892EEBD2B682BEF005DC6B5 /* ClevelandMuseumNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = B892EEBC2B682BEF005DC6B5 /* ClevelandMuseumNetworking */; };
 		B89EC5A42AEB12040017A28C /* ClevelandMuseumNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = B89EC5A32AEB12040017A28C /* ClevelandMuseumNetworking */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +45,7 @@
 		B81F514B2B0D70F100765A44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B81F515F2B0D710F00765A44 /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UI; sourceTree = "<group>"; };
 		B81F516A2B0EAF4E00765A44 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		B820BCD02AF26128001E4A3C /* IOS-2308-Kulakov-HW-4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IOS-2308-Kulakov-HW-4-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B820BCD02AF26128001E4A3C /* IOS-2308-Kulakov-HW-4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "IOS-2308-Kulakov-HW-4-Info.plist"; path = "IOS_2308_Kulakov_HW_4/IOS-2308-Kulakov-HW-4-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B8614E642B535B7F001DF305 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		B8614E682B535BAE001DF305 /* FullImageScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageScreen.swift; sourceTree = "<group>"; };
 		B8614E6A2B535BAE001DF305 /* ArtworkScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkScreen.swift; sourceTree = "<group>"; };
@@ -65,8 +65,8 @@
 			files = (
 				B89EC5A42AEB12040017A28C /* ClevelandMuseumNetworking in Frameworks */,
 				B838C6A72ADED37200E74DF8 /* UI in Frameworks */,
-				B8614E5B2B53439B001DF305 /* ClevelandMuseumNetworking in Frameworks */,
 				B8614E5E2B5345D2001DF305 /* ArtInstituteChicagoNetworking in Frameworks */,
+				B892EEBD2B682BEF005DC6B5 /* ClevelandMuseumNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				B81F512C2B0D70F100765A44 /* IOS_2308_Kulakov_HW_4 */,
-				B820BCD02AF26128001E4A3C /* IOS-2308-Kulakov-HW-4-Info.plist */,
 				B80E5F0D2AD88A420039961F /* Products */,
 				B838C6A22ADEA1A800E74DF8 /* Frameworks */,
 			);
@@ -102,6 +101,7 @@
 				B81F51312B0D70F100765A44 /* Extensions */,
 				B81F514A2B0D70F100765A44 /* Assets */,
 				B81F512F2B0D70F100765A44 /* Preview Content */,
+				B820BCD02AF26128001E4A3C /* IOS-2308-Kulakov-HW-4-Info.plist */,
 			);
 			path = IOS_2308_Kulakov_HW_4;
 			sourceTree = "<group>";
@@ -265,8 +265,8 @@
 			packageProductDependencies = (
 				B838C6A62ADED37200E74DF8 /* UI */,
 				B89EC5A32AEB12040017A28C /* ClevelandMuseumNetworking */,
-				B8614E5A2B53439B001DF305 /* ClevelandMuseumNetworking */,
 				B8614E5D2B5345D2001DF305 /* ArtInstituteChicagoNetworking */,
+				B892EEBC2B682BEF005DC6B5 /* ClevelandMuseumNetworking */,
 			);
 			productName = IOS_2308_Kulakov_HW_2;
 			productReference = B80E5F0C2AD88A420039961F /* IOS_2308_Kulakov_HW_4.app */;
@@ -297,8 +297,8 @@
 			);
 			mainGroup = B80E5F032AD88A420039961F;
 			packageReferences = (
-				B8614E592B53439B001DF305 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */,
 				B8614E5C2B5345D2001DF305 /* XCRemoteSwiftPackageReference "ArtInstituteChicagoNetworking" */,
+				B892EEBB2B682BEF005DC6B5 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */,
 			);
 			productRefGroup = B80E5F0D2AD88A420039961F /* Products */;
 			projectDirPath = "";
@@ -475,7 +475,7 @@
 				DEVELOPMENT_TEAM = 6464RAB4U4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "IOS-2308-Kulakov-HW-4-Info.plist";
+				INFOPLIST_FILE = "IOS_2308_Kulakov_HW_4/IOS-2308-Kulakov-HW-4-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "A r t";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -505,7 +505,7 @@
 				DEVELOPMENT_TEAM = 6464RAB4U4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "IOS-2308-Kulakov-HW-4-Info.plist";
+				INFOPLIST_FILE = "IOS_2308_Kulakov_HW_4/IOS-2308-Kulakov-HW-4-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "A r t";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -548,17 +548,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B8614E592B53439B001DF305 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */ = {
+		B8614E5C2B5345D2001DF305 /* XCRemoteSwiftPackageReference "ArtInstituteChicagoNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/denisKk/ClevelandMuseumNetworking.git";
+			repositoryURL = "https://github.com/denisKk/ArtInstituteChicagoNetworking.git";
 			requirement = {
 				branch = main;
 				kind = branch;
 			};
 		};
-		B8614E5C2B5345D2001DF305 /* XCRemoteSwiftPackageReference "ArtInstituteChicagoNetworking" */ = {
+		B892EEBB2B682BEF005DC6B5 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/denisKk/ArtInstituteChicagoNetworking.git";
+			repositoryURL = "https://github.com/denisKk/ClevelandMuseumNetworking.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -571,15 +571,15 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = UI;
 		};
-		B8614E5A2B53439B001DF305 /* ClevelandMuseumNetworking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B8614E592B53439B001DF305 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */;
-			productName = ClevelandMuseumNetworking;
-		};
 		B8614E5D2B5345D2001DF305 /* ArtInstituteChicagoNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B8614E5C2B5345D2001DF305 /* XCRemoteSwiftPackageReference "ArtInstituteChicagoNetworking" */;
 			productName = ArtInstituteChicagoNetworking;
+		};
+		B892EEBC2B682BEF005DC6B5 /* ClevelandMuseumNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B892EEBB2B682BEF005DC6B5 /* XCRemoteSwiftPackageReference "ClevelandMuseumNetworking" */;
+			productName = ClevelandMuseumNetworking;
 		};
 		B89EC5A32AEB12040017A28C /* ClevelandMuseumNetworking */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -13,7 +13,7 @@ struct ArtworksList<Service: NetworkingService>: View {
         
         scrollView
             .onAppear{
-                artworkListVM.fetch()
+                artworkListVM.fetchData()
             }
             .ignoresSafeArea()
     }
@@ -28,7 +28,7 @@ struct ArtworksList<Service: NetworkingService>: View {
                     .navigationPushLink(destination: ArtworkScreen(artwork: artwork))
                     .onAppear{
                         if artworkListVM.artworks.isLastElement(artwork) {
-                            artworkListVM.fetch()
+                            artworkListVM.fetchData()
                         }
                     }
 //                    .transition(.moveToBottom)
